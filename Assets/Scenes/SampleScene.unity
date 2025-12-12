@@ -842,6 +842,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amountCorrect: {fileID: 1417171657}
+  checkButton: {fileID: 1733622168}
 --- !u!4 &1074818948
 Transform:
   m_ObjectHideFlags: 0
@@ -875,7 +876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1114234820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1606,7 +1607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1785385318
 Transform:
   m_ObjectHideFlags: 0
@@ -1695,6 +1696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b340d75f1148c4ac6809eafe884a8995, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  State: 1
   insideCups:
   - {fileID: 3548837786250186499, guid: 4a55cb4e94c3448ab9a9df582eae1dc7, type: 3}
   - {fileID: 210780072446910961, guid: a29792041d80b43538566ef454ac14df, type: 3}
