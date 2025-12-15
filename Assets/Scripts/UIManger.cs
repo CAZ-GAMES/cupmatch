@@ -7,7 +7,19 @@ using UnityEngine.UI;
 public class UIManger : MonoBehaviour
 {
     public TextMeshProUGUI amountCorrect;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public Button checkButton;
+
+    int fullCorrect = 4;
+
+    void Awake()
+    {
+        GameManager.OnGameStateChange += Won;
+    }
+
+    void OnDestroy()
+    {
+        GameManager.OnGameStateChange -= Won;
+    }
     void Start()
     {
 
@@ -27,17 +39,32 @@ public class UIManger : MonoBehaviour
 
         for (int i = 0; i < inside.Count; i++)
         {
-            if (inside[i].name == outside[i].name)
+            // compare material color to compare item in list is in correct order
+            if (inside[i].GetComponent<Renderer>().sharedMaterial == outside[i].GetComponent<Renderer>().sharedMaterial)
             {
+                print(inside[i].GetComponent<Renderer>().sharedMaterial);
                 correct++;
             }
         }
         UpdateCorrect(correct);
+        if (correct == fullCorrect)
+        {
+            GameManager.Instance.UpdateGameState(GameState.Win);
+        }
     }
 
     public void UpdateCorrect(int correct)
     {
         amountCorrect.GetComponent<TextMeshProUGUI>().enabled = true;
         amountCorrect.text = "Amount Correct: " + correct;
+    }
+
+    void Won(GameState state)
+    {
+        if (state == GameState.Win)
+        {
+            checkButton.gameObject.SetActive(false);
+            print("You won");
+        }
     }
 }
