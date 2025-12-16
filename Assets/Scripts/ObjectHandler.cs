@@ -76,12 +76,19 @@ IEnumerator RotateTimed(float duration, GameObject clicked, Vector3 objDistance)
 
 public void SwapListPos()
 {
-    // find index of items that are clicked on to be swapped
-    int indexA = GameManager.Instance.insideCups.FindIndex(c => c.name == GameManager.Instance.clickedOn[0].name);
-    int indexB = GameManager.Instance.insideCups.FindIndex(c => c.name == GameManager.Instance.clickedOn[1].name);
+    // get index of each object selected and change its position in outsideCups list
+    int indexA = GameManager.Instance.outsideCups.FindIndex(c => c == GameManager.Instance.clickedOn[0]);
+    int indexB = GameManager.Instance.outsideCups.FindIndex(c => c == GameManager.Instance.clickedOn[1]);
 
-    // swap items in the list to then be compared
-    (GameManager.Instance.insideCups[indexB], GameManager.Instance.insideCups[indexA]) = (GameManager.Instance.insideCups[indexA], GameManager.Instance.insideCups[indexB]);
+    // check to see if items exist
+    if (indexA == -1 || indexB == -1)
+    {
+        Debug.LogError($"Object not found! indexA: {indexA}, indexB: {indexB}");
+        return;
+    }
+
+    (GameManager.Instance.outsideCups[indexB], GameManager.Instance.outsideCups[indexA]) = 
+        (GameManager.Instance.outsideCups[indexA], GameManager.Instance.outsideCups[indexB]);
 }
 
 // Update is called once per frame
