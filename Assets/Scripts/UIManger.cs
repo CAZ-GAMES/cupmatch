@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 
 public class UIManger : MonoBehaviour
@@ -42,7 +43,6 @@ public class UIManger : MonoBehaviour
             // compare material color to compare item in list is in correct order
             if (inside[i].GetComponent<Renderer>().sharedMaterial == outside[i].GetComponent<Renderer>().sharedMaterial)
             {
-                print(inside[i].GetComponent<Renderer>().sharedMaterial);
                 correct++;
             }
         }
@@ -63,8 +63,11 @@ public class UIManger : MonoBehaviour
     {
         if (state == GameState.Win)
         {
+            StartCoroutine(this.gameObject.AddComponent<ObjectHandler>().RotateToReveal(0.5f));
             checkButton.gameObject.SetActive(false);
             print("You won");
+            
+            // RotateToReveal();
         }
     }
 }

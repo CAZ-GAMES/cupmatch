@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public Transform insideParent;
 
+    public Transform boxContainer;
+
     public List<GameObject> clickedOn = new();
 
         readonly List<(float x,float y)> pos = new();
