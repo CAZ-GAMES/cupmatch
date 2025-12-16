@@ -1,10 +1,6 @@
 using System.Collections.Generic;
 using System;
-using System.Collections;
 using UnityEngine;
-using System.Linq;
-using System.ComponentModel.Design.Serialization;
-using Unity.VisualScripting;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
@@ -67,7 +63,7 @@ public class GameManager : MonoBehaviour
     int i = 0;
     foreach (GameObject x in GameManager.Instance.insideCups)
     {
-        Instantiate(x, new Vector3(pos[i].x,pos[i].y), Quaternion.identity, GameManager.Instance.insideParent);
+        Instantiate(x, new Vector3(pos[i].x,pos[i].y), Quaternion.identity, GameManager.Instance.insideParent);   
         i++;
     }
 }
