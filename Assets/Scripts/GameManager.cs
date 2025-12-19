@@ -5,7 +5,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     public GameState State;
-
+    public UIManger UIManager;
     public static event Action<GameState> OnGameStateChange;
     public List<GameObject> insideCups;
     public List<GameObject> outsideCups;
@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public Transform boxContainer;
 
     public List<GameObject> clickedOn = new();
+
+    public int moves = 0;
 
         readonly List<(float x,float y)> pos = new();
 

@@ -48,6 +48,8 @@ public class ObjectHandler : MonoBehaviour, IPointerClickHandler
         StartCoroutine(RotateTimed(.5f, GameManager.Instance.clickedOn[1], objDistance));
         SwapListPos();
         GameManager.Instance.clickedOn.Clear();
+        GameManager.Instance.moves++;
+        GameManager.Instance.UIManager.MoveCountUpdate();
     }
 
     IEnumerator RotateTimed(float duration, GameObject clicked, Vector3 objDistance)

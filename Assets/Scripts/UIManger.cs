@@ -8,6 +8,7 @@ using Unity.VisualScripting;
 public class UIManger : MonoBehaviour
 {
     public TextMeshProUGUI amountCorrect;
+    public TextMeshProUGUI moveCount;
     public Button checkButton;
 
     int fullCorrect = 4;
@@ -37,6 +38,8 @@ public class UIManger : MonoBehaviour
         List<GameObject> inside = GameManager.Instance.insideCups;
         List<GameObject> outside = GameManager.Instance.outsideCups;
         int correct = 0;
+        GameManager.Instance.moves++;
+        MoveCountUpdate();
 
         for (int i = 0; i < inside.Count; i++)
         {
@@ -69,5 +72,11 @@ public class UIManger : MonoBehaviour
             
             // RotateToReveal();
         }
+    }
+
+    public void MoveCountUpdate()
+    {
+        // update moveCount when checking list
+        this.moveCount.text = "Moves: " + GameManager.Instance.moves;
     }
 }
